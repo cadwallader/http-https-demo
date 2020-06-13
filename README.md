@@ -2,26 +2,37 @@
 * Uses node's built-in http and https modules
 * Creates public and private keys using openssl
 * Listens on default ports 80 and 443 respectively
+
+instal
 ```sh
 git clone https://github.com/andrew-cadwallader/http-https-demo.git
 cd http-https-demo
-
+```
+start
+```sh
 npm start &
 #> http-https-demo@1.0.0 start /httphttps
 #> if [[ -f key.pem ]] ; then node server.js ; else npm run keygen && node server.js ; fi
 #
 #http://localhost:80
 #https://localhost:443
-
+```
+test http
+```sh
 curl localhost
 #GET localhost:80/
 #Got HTTP
-
-curl -k https://localhost # -k flag to ignore self-signed certificate
+```
+test https
+```sh
+curl -k https://localhost
 #GET localhost:443/
 #Got HTTPS
-
-curl https://localhost # without -k flag
+```
+Note: `-k` ignore self-signed certificate warning
+Compare to
+```
+curl https://localhost
 #curl: (60) SSL certificate problem: self signed certificate
 #More details here: https://curl.haxx.se/docs/sslcerts.html
 #
@@ -30,8 +41,7 @@ curl https://localhost # without -k flag
 #how to fix it, please visit the web page mentioned above.
 ```
 
-### example unencrypted http packet
-Note payload data `Got HTTP`
+### Unencrypted http packet
 ```
 14:58:53.663578 IP6 localhost.http > localhost.62912: Flags [P.], seq 1:109, ack 74, win 6370, options [nop,nop,TS val 882519335 ecr 882519334], length 108: HTTP: HTTP/1.1 200 OK
 	0x0000:  6004 1fa0 008c 0640 0000 0000 0000 0000  `......@........
@@ -47,9 +57,9 @@ Note payload data `Got HTTP`
 	0x00a0:  6e67 7468 3a20 390d 0a0d 0a47 6f74 2048  ngth:.9....Got.H
 	0x00b0:  5454 500a                                TTP.
 ```
+Note: payload data `Got HTTP`
 
 ### Encrypted https packet
-Payload data `Got HTTPS` encrypted
 ```
 14:58:59.104858 IP6 localhost.https > localhost.62913: Flags [P.], seq 2025:2157, ack 693, win 6361, options [nop,nop,TS val 882524762 ecr 882524762], length 132
 	0x0000:  6009 79b6 00a4 0640 0000 0000 0000 0000  `.y....@........
@@ -66,4 +76,4 @@ Payload data `Got HTTPS` encrypted
 	0x00b0:  679c 9f3e b185 6981 50e8 2f19 ef1c 8a45  g..>..i.P./....E
 	0x00c0:  ce4d b25a 9e62 74a7 c849 d93f            .M.Z.bt..I.?
 ```
-
+Payload data `Got HTTPS` encrypted
