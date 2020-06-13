@@ -11,7 +11,7 @@ cd http-https-demo
 start
 ```sh
 npm start &
-#> http-https-demo@1.0.0 start /httphttps
+#> http-https-demo@1.0.0 start /http-https-demo
 #> if [[ -f key.pem ]] ; then node server.js ; else npm run keygen && node server.js ; fi
 #
 #http://localhost:80
