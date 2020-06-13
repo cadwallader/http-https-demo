@@ -1,0 +1,31 @@
+{
+  "name": "http-https-demo",
+  "version": "1.0.0",
+  "description": "Demonstrate HTTP and HTTPS servers",
+  "main": "server.js",
+  "scripts": {
+    "keygen": "printf \"\n\n\n\n\n\n\n\" | . makeKeys.sh",
+    "start": "if [[ -f key.pem ]] ; then node server.js ; else npm run keygen && node server.js ; fi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew-cadwallader/http-https-demo.git"
+  },
+  "keywords": [
+    "http",
+    "https",
+    "openssl",
+    "node",
+    "tls",
+    "ssl",
+    "key",
+    "cert",
+    "pem"
+  ],
+  "author": "andrew-cadwallader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrew-cadwallader/http-https-demo/issues"
+  },
+  "homepage": "https://github.com/andrew-cadwallader/http-https-demo#readme"
+}
