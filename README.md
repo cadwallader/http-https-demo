@@ -3,7 +3,7 @@
 * Creates public and private keys using openssl
 * Listens on default ports 80 and 443 respectively
 
-instal
+install
 ```sh
 git clone https://github.com/andrew-cadwallader/http-https-demo.git
 cd http-https-demo
